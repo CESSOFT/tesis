@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
+	<classpathentry kind="lib" path="C:/Users/tpbm68/Documents/TesisProject/lib/classdoc.jar"/>
+	<classpathentry kind="lib" path="C:/Users/tpbm68/Documents/TesisProject/lib/jaxen-core.jar"/>
+	<classpathentry kind="lib" path="C:/Users/tpbm68/Documents/TesisProject/lib/jaxen-jdom.jar"/>
+	<classpathentry kind="lib" path="C:/Users/tpbm68/Documents/TesisProject/lib/jdom.jar"/>
+	<classpathentry kind="lib" path="C:/Users/tpbm68/Documents/TesisProject/lib/jdom-1.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/tpbm68/Documents/TesisProject/lib/jtestcase.jar"/>
+	<classpathentry kind="lib" path="C:/Users/tpbm68/Documents/TesisProject/lib/jtestcase_4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/tpbm68/Documents/TesisProject/lib/junit-3.8.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/tpbm68/Documents/TesisProject/lib/org.jicengine-2.0.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/tpbm68/Documents/TesisProject/lib/saxpath.jar"/>
+	<classpathentry kind="lib" path="C:/Users/tpbm68/Documents/TesisProject/lib/tools-1.5.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/tpbm68/Documents/TesisProject/lib/xerces.jar"/>
+	<classpathentry kind="lib" path="C:/Users/tpbm68/Documents/TesisProject/lib/xmlutil.jar"/>
+	<classpathentry kind="lib" path="C:/Users/tpbm68/Documents/TesisProject/lib/xtype.jar"/>
+	<classpathentry kind="lib" path="C:/Users/tpbm68/Documents/TesisProject/lib/appframework-1.03.jar" sourcepath="C:/Users/tpbm68/.m2/repository/net/java/dev/appframework/appframework/1.03/appframework-1.03-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/tpbm68/Documents/TesisProject/lib/swing-layout-1.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/tpbm68/Documents/TesisProject/lib/swing-worker-1.2.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

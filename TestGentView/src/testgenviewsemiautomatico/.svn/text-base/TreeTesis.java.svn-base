@@ -1,0 +1,83 @@
+package testgen4jsemiautomatico;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.HashSet;
+import javax.swing.JLabel;
+import javax.swing.JTree;
+import javax.swing.event.TreeSelectionEvent;
+import javax.swing.tree.DefaultMutableTreeNode;
+import org.jdom.JDOMException;
+
+/**
+ *
+ * @author Eduardo
+ */
+public class TreeTesis {
+   private HashSet<DtoXmlTree> dtoList;
+   private static final long serialVersionUID = 1L;
+	DefaultMutableTreeNode clase,metodo0,metodo1,parametro,param00,param01;
+	JTree arbol;
+
+	public JTree TreeTesis(String nameFile) throws IOException, JDOMException{
+		System.out.println("Constructor TreeTesis");
+		arbol = new JTree(armarArbol(nameFile));
+                System.out.println("Arbol :"+arbol);
+		return arbol;
+	}
+
+
+	private void jTree1ValueChanged(TreeSelectionEvent evt) {
+		System.out.println("jTree1.valueChanged, event="+evt);
+		JLabel jLabel2;
+		jLabel2 = new JLabel();
+		jLabel2.setText("Clase: ");
+		jLabel2.setBounds(294, 32, 74, 14);
+
+	}
+	/**
+	 * @param args
+	 * @throws JDOMException
+	 * @throws IOException
+	 */
+	private  DefaultMutableTreeNode armarArbol(String nameFile) throws IOException, JDOMException{
+		File file=new File(nameFile);
+                System.out.println("File name: "+file.getName());
+		LeerXML xml=new LeerXML();
+		HashSet<DtoXmlTree> dtoList=new HashSet<DtoXmlTree>();
+
+		DefaultMutableTreeNode root = new DefaultMutableTreeNode("Clases");
+		dtoList=xml.LeerXML(file);
+                this.setDtoList(dtoList);
+		for(DtoXmlTree dt: dtoList){
+			DefaultMutableTreeNode clase = new DefaultMutableTreeNode(dt.getClassName());
+			System.out.println("Class name: "+dt.getClassName());
+			root.add(clase);
+			HashSet<String> metodos=new HashSet<String>();
+			metodos=dt.getMetodoNameParam();
+			for(String met:metodos){
+				DefaultMutableTreeNode metodo= new DefaultMutableTreeNode(met);
+				clase.add(metodo);
+				System.out.println("metodo Name : "+met);
+			}
+
+		}
+                System.out.println("Root Name : "+root.getRoot());
+		return root;
+	}
+
+    /**
+     * @return the dtoList
+     */
+    public HashSet<DtoXmlTree> getDtoList() {
+        return dtoList;
+    }
+
+    /**
+     * @param dtoList the dtoList to set
+     */
+    public void setDtoList(HashSet<DtoXmlTree> dtoList) {
+        this.dtoList = dtoList;
+    }
+
+}

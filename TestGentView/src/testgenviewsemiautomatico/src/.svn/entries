@@ -1,0 +1,175 @@
+10
+
+dir
+0
+https://cessoft/svn/TestGen4J/Testgen4JSemiAutomatico/src/testgen4jsemiautomatico/src
+https://cessoft/svn/TestGen4J
+add
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ad7af34a-1828-8444-99b1-f990f91eba50
+
+ParameterImpl.java
+file
+
+
+
+add
+
+EjecutarTest.java
+file
+
+
+
+add
+
+PackageDocImpl.java
+file
+
+
+
+add
+
+LoadClass.java
+file
+
+
+
+add
+
+Compilar.java
+file
+
+
+
+add
+
+rules.xsd
+file
+
+
+
+add
+
+UtilGen.java
+file
+
+
+
+add
+
+rules.xml
+file
+
+
+
+add
+
+PruebaDoclet.java
+file
+
+
+
+add
+
+ClassDocImpl.java
+file
+
+
+
+add
+
+MemberDocImpl.java
+file
+
+
+
+add
+
+ExecutableMemberDocImpl.java
+file
+
+
+
+add
+
+GeneraDoc.java
+file
+
+
+
+add
+
+DocImpl.java
+file
+
+
+
+add
+
+MethodDocImpl.java
+file
+
+
+
+add
+
+ProgramElementDocImpl.java
+file
+
+
+
+add
+
+FieldDocImpl.java
+file
+
+
+
+add
+
+RootDocImpl.java
+file
+
+
+
+add
+
+classdoc.java
+file
+
+
+
+add
+
+ConstructorDocImpl.java
+file
+
+
+
+add
+
+TagImpl.java
+file
+
+
+
+add
+

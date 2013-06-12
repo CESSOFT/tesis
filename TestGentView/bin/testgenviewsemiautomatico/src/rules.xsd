@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Case">
+    <xs:complexType>
+      <xs:attribute name="value" type="xs:string" use="required" />
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="DataType">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="Case" maxOccurs="unbounded" />
+      </xs:sequence>
+      <xs:attribute name="name" type="xs:NMTOKEN" use="required" />
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="Rules">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="DataType" maxOccurs="unbounded" />
+      </xs:sequence>
+      <xs:attribute name="xsi:noNamespaceSchemaLocation" type="xs:string" use="required" />
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>

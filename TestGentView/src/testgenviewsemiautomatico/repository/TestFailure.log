@@ -1,0 +1,8 @@
+**************************************************************************************
+* Error: Fail to test subtraction when asserting result!
+* Test Class: Sample1Test
+* Test Method: testSubtraction
+* Failed Test Case: 
+* var1 : Value--> 34
+* var2 : Value--> 14
+**************************************************************************************

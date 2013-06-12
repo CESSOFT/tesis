@@ -1,0 +1,62 @@
+<?xml version ="1.0" encoding = "UTF-8"?>
+        <Rules xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                xsi:noNamespaceSchemaLocation="config/jtestcase.xsd">
+			  <DataType name="boolean">
+				   <Case value="TRUE"></Case>
+				   <Case value="FALSE"></Case>
+			  </DataType>
+  			  <DataType name="char">
+			  	    <Case value="NULL"></Case>
+			    	<Case value="EMPTY"></Case>
+				    <Case value="0"></Case>
+				    <Case value="9"></Case>
+				    <Case value="#"></Case>
+				    <Case value="%"></Case>
+				    <Case value="A"></Case>
+			    	<Case value="a"></Case>
+			    	<Case value="SPACE"></Case>
+			  </DataType> 
+			  <DataType name="String">
+					<Case value="NULL"></Case>
+					<Case value="EMPTY"></Case>
+					<Case value="SPACE"></Case>
+			  </DataType>
+			  <DataType name="int">
+			  		<Case value="2147483648"></Case>
+			  		<Case value="2147483647"></Case>
+			  		<Case value="2147483646"></Case>
+			  		<Case value="0"></Case>
+			  		<Case value="-2147483647"></Case>
+			  		<Case value="-2147483648"></Case>
+			  		<Case value="-2147483649"></Case>
+			    	<Case value="0"></Case>
+     		  </DataType>
+			  <DataType name="short">
+			  		<Case value="32768"></Case>
+			   		<Case value="32767"></Case>
+			   		<Case value="32766"></Case>
+			   		<Case value="0"></Case>
+			   		<Case value="-32767"></Case>
+			  		<Case value="-32768"></Case>
+			  		<Case value="-32769"></Case>			  		
+			  </DataType>
+			  <DataType name="long">
+			  		<Case value="-9223372036854775809"></Case>
+			   		<Case value="-9223372036854775808"></Case>
+			   		<Case value="-9223372036854775807"></Case>
+			   		<Case value="0"></Case>
+			   		<Case value="9223372036854775806"></Case>
+			  		<Case value="9223372036854775807"></Case>
+			  		<Case value="9223372036854775808"></Case>			  		
+			  </DataType>
+			  <DataType name="float">
+			  		<Case value="1.4E-45"></Case>
+			  		<Case value="3.4028235E+38"></Case>
+			  		<Case value="0"></Case>
+			  </DataType>
+			  <DataType name="double">
+			  		<Case value="4.9E-324"></Case>
+			  		<Case value="1.7976931348623157E+308"></Case>
+			  		<Case value="0"></Case>
+			  </DataType>
+  		</Rules>

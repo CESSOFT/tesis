@@ -1,0 +1,63 @@
+10
+
+dir
+0
+https://cessoft/svn/TestGen4J/Testgen4JSemiAutomatico/src/testgen4jsemiautomatico/testgent4j
+https://cessoft/svn/TestGen4J
+add
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ad7af34a-1828-8444-99b1-f990f91eba50
+
+RulesEngine.java
+file
+
+
+
+add
+
+TestDataGeneration.java
+file
+
+
+
+add
+
+SpikeTestGen.java
+file
+
+
+
+add
+
+TestCodeGeneration.java
+file
+
+
+
+add
+
+TestCaseLogger.java
+file
+
+
+
+add
+

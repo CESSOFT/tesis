@@ -1,0 +1,144 @@
+package testgen4jsemiautomatico;
+
+import java.awt.FileDialog;
+import java.awt.Frame;
+import java.io.File;
+import java.text.Format;
+import java.util.Formatter;
+import java.util.HashMap;
+import java.util.Set;
+import java.util.regex.Pattern;
+import javax.swing.JFormattedTextField;
+import javax.swing.text.MaskFormatter;
+
+/**
+ *
+ * @author Eduardo
+ */
+public class UtilTestGen {
+    public String loadFile
+	(Frame f, String title, String defDir, String fileType) {
+		FileDialog fd = new FileDialog(f, title, FileDialog.LOAD);
+		fd.setFile(fileType);
+		fd.setDirectory(defDir);
+		fd.setLocation(50, 50);
+		fd.show();
+		return fd.getDirectory()+fd.getFile();
+	}
+    	static public void ejecutarBatComp(String filePatch){
+		Runtime aplicacion = Runtime.getRuntime();
+        try{
+        	System.out.println("Ejutar .bat");
+                UtilTestGen.clearDirectory("E:\\TESIS\\Repositorio\\");
+        	aplicacion.exec("cmd.exe /C start E:\\TESIS\\testGen4j\\test2EduG_1.bat "+filePatch);
+                Thread.sleep(2000);
+        }catch(Exception e){
+        	System.out.println(e);
+        	}
+        }
+
+        static public void ejecutarBatRun(String filePatch){
+		Runtime aplicacion = Runtime.getRuntime();
+        try{
+        	System.out.println("Ejutar .bat");
+                UtilTestGen.clearDirectory("E:\\TESIS\\Repositorio\\");
+        	aplicacion.exec("cmd.exe /C start E:\\TESIS\\testGen4j\\test2EduG_Ejecu.bat "+filePatch);
+                Thread.sleep(2000);
+        }catch(Exception e){
+        	System.out.println(e);
+        	}
+        }
+
+
+        static public String parserPatch(String pat) {
+              String [] patchs=pat.split("\\W");
+                
+                String patch="";
+                for(int i=0;i<patchs.length-2;i++){
+                    if(i==0){
+                        patch=patch.concat(patchs[i]+":\\");
+                    }else{
+                        patch=patch.concat(patchs[i]+"\\");
+                    }
+                    
+                }
+                System.out.println("Patch .........:"+patch);
+
+            return patch;
+        }
+        static public DtoXMLCasoPrueba SetDtoCaso(DtoXmlTree dtoTree) {
+            DtoXMLCasoPrueba dtoCaso=new DtoXMLCasoPrueba();
+            dtoCaso.setClaseName(dtoTree.getClassName());
+            String metodo=(String)dtoTree.getMetodoNameParam().toArray()[0];
+            dtoCaso.setMetodo(metodo);
+            Set<String> paraname=dtoTree.getParameTipo().get(metodo).keySet();
+            HashMap<String, String> parameTipo=new HashMap<String, String>();
+            HashMap<String, String> parameValor=new HashMap<String, String>();
+            for(String in:paraname){
+               parameTipo.put(in,dtoTree.getParameTipo().get(metodo).get(in));
+               parameValor.put(in,dtoTree.getParameValor().get(metodo).get(in));
+            }
+            dtoCaso.setPatch(dtoTree.getPatch());
+            dtoCaso.setTypeassert(dtoTree.getParameRetorno().get(metodo));
+            dtoCaso.setValorassert(dtoTree.getParameRetornoValor().get(metodo));
+            dtoCaso.setParameTipo(parameTipo);
+            dtoCaso.setParameValor(parameValor);
+            return dtoCaso;
+        }
+        static public JFormattedTextField getFormatotype(String type){
+        System.out.println("......."+type+"..........");
+        String typetrim=type.trim();
+           Pattern Patte=Pattern.compile("--");
+           JFormattedTextField jformattred=null;
+            if("int".equals(typetrim)){
+                int i=0;
+               jformattred=new JFormattedTextField(i);
+           }
+           if("char".equals(typetrim)){
+                Character c='a';
+                try {
+                MaskFormatter fm=new MaskFormatter("*");
+                jformattred=new JFormattedTextField(fm);
+                }catch (Exception e){
+                    
+                }
+
+           
+           }
+           if("byte".equals(typetrim)){
+                byte b=0;
+               jformattred=new JFormattedTextField(b);
+           }
+           if("short".equals(typetrim)){
+                short s=0;
+               jformattred=new JFormattedTextField(s);
+           }
+           if("long".equals(typetrim)){
+                long l=0;
+               jformattred=new JFormattedTextField(l);
+           }
+           if("float".equals(typetrim)){
+                float f=0.0f;
+               jformattred=new JFormattedTextField(f);
+           }
+           if("double".equals(typetrim)){
+                double d=0.0;
+               jformattred=new JFormattedTextField(d);
+           }
+             if("boolean".equals(typetrim)){
+                boolean b=true;
+               jformattred=new JFormattedTextField(b);
+           }
+            return jformattred;
+        }
+        private static void clearDirectory(String patch){
+            File file=new File(patch);
+            String [] dirlist=file.list();
+            for(String in:dirlist){
+                File f=new File(in);
+                if(f.isFile()){
+                    f.delete();
+                }
+            }
+        }
+}

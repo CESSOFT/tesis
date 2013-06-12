@@ -1,0 +1,56 @@
+10
+
+dir
+0
+https://cessoft/svn/TestGen4J/Testgen4JSemiAutomatico/src/testgen4jsemiautomatico/repository
+https://cessoft/svn/TestGen4J
+add
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ad7af34a-1828-8444-99b1-f990f91eba50
+
+log
+dir
+
+
+
+add
+
+data.xml
+file
+
+
+
+add
+
+ParseFailedDataFile.java
+file
+
+
+
+add
+
+LogTestCase.java
+file
+
+
+
+add
+
