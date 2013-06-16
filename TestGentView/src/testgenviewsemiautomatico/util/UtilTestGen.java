@@ -337,27 +337,30 @@ public class UtilTestGen {
         TestFile.delete();
     
     }
-    public static void limpiarDirectorios(){
-        File directorio=new File(getPatchRepo());
-        String[] lista=directorio.list();
-        for(String ind:lista){
-            File arch=new File(getPatchRepo()+ind);
-            if(arch.isFile()){
-                arch.delete();
-            }
-        }
-        File directoriobuildin=new File(getPatchRepoBuildin());
-        String[] listab=directoriobuildin.list();
-         
-        for(String ind:listab){
-            System.out.println("Archivo :"+ind);
-            File arch=new File(getPatchRepoBuildin()+ind);
-            if(arch.isFile()){
-                 arch.delete();
-            }
-        }
-        System.out.println("Termino borrado de archivos....");
-    }
+
+	public static void limpiarDirectorios(String clean) {
+		File directorio = new File(getPatchRepo());
+		String[] lista = directorio.list();
+		for (String ind : lista) {
+			File arch = new File(getPatchRepo() + ind);
+			if (arch.isFile()) {
+				arch.delete();
+			}
+		}
+		if (clean.equals("all")) {
+			File directoriobuildin = new File(getPatchRepoBuildin());
+			String[] listab = directoriobuildin.list();
+
+			for (String ind : listab) {
+				System.out.println("Archivo :" + ind);
+				File arch = new File(getPatchRepoBuildin() + ind);
+				if (arch.isFile()) {
+					arch.delete();
+				}
+			}
+		}
+		System.out.println("Termino borrado de archivos....");
+	}
     public static void copyFileClass(){
 
         File src=new File(getPatchRepo());
@@ -468,6 +471,10 @@ public class UtilTestGen {
 		  }//end try catch
 
 		   }//end method
+	
+	public static void clearreference(String clas) throws IOException {
+		
+	}
 	   
 
 
