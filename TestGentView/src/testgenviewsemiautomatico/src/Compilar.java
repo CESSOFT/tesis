@@ -13,7 +13,7 @@ import javax.tools.StandardJavaFileManager;
 import javax.tools.ToolProvider;
 import javax.tools.JavaCompiler.CompilationTask;
 
-import testgenviewsemiautomatico.UtilTestGen;
+import testgenviewsemiautomatico.util.UtilTestGen;
 
 
 
@@ -21,12 +21,9 @@ public class Compilar {
 
 	/**
 	 * @param args
-	 * @throws InvocationTargetException 
-	 * @throws IllegalAccessException 
-	 * @throws IllegalArgumentException 
-	 * @throws InstantiationException 
+	 * @throws Exception 
 	 */
-	public static void main(String[] args) throws IllegalArgumentException, IllegalAccessException, InvocationTargetException, InstantiationException {
+	public static void main(String[] args) throws Exception {
 		//JavaCompiler 
 		 String sourceFile = UtilTestGen.getPatchRepo();
 	        JavaCompiler compiler = ToolProvider.getSystemJavaCompiler ();
@@ -62,6 +59,7 @@ public class Compilar {
 	            System.out.println ("Compilation was successful");
 	        } else {
 	            System.out.println ("Compilation failed");
+	            throw new Exception("ERROR DE COMPILACION EN LA CLASE ");
 	        }
 	       
 	            fileManager.close ();

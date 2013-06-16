@@ -2,13 +2,18 @@ package testgenviewsemiautomatico.src;
 
 import java.io.IOException;
 import java.lang.reflect.*;
-import testgenviewsemiautomatico.UtilTestGen;
+
+import org.jtestcase.core.type.TypeConversionException;
+
+import com.sun.tools.internal.ws.wsdl.document.jaxws.Exception;
+
+import testgenviewsemiautomatico.util.UtilTestGen;
 
 public class EjecutarTest {
 
 
 
-	public static void main(String [] arg) {
+	public static void main(String [] arg) throws NoSuchMethodException, java.lang.Exception{
 		System.out.println("Ejecutando : "+arg);
 		UtilTestGen.removeFile();
 		Class clase=null;
@@ -17,11 +22,11 @@ public class EjecutarTest {
 			
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new ClassNotFoundException(":Error al quere ejecutar");
 		}// forName(String className);
 		catch (SecurityException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new SecurityException(":Error al quere ejecutar");
 		}
 		//El arreglo de parámetros
 		Object[] args_value = { arg };
@@ -32,20 +37,22 @@ public class EjecutarTest {
 		try {
 			m = clase.getMethod("main", args_class);
 		} catch (SecurityException e) {
-			e.printStackTrace();
+			throw new SecurityException(":Error al quere ejecutar");
 		} catch (NoSuchMethodException e) {
-			e.printStackTrace();
+			 throw new NoSuchMethodException(":Error al quere ejecutar");
 		}
 		//Invocando el método
 		Object result = new Object();
 		try {
 			result = m.invoke(clase, args_value);
 		} catch (IllegalArgumentException e) {
-			e.printStackTrace();
+			 throw new IllegalArgumentException(e);
 		} catch (IllegalAccessException e) {
-			e.printStackTrace();
+			throw new IllegalAccessException(e+"");
 		} catch (InvocationTargetException e) {
-			e.printStackTrace();
+			throw new InvocationTargetException(e);
+		}catch (RuntimeException e){
+			throw new RuntimeException(e);
 		}
 
         //PackageTestSuite.main(arg);

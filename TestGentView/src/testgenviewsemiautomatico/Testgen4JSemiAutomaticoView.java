@@ -33,6 +33,11 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import org.jdom.Document;
 import org.jdom.JDOMException;
 
+import testgenviewsemiautomatico.dto.DtoXmlTree;
+import testgenviewsemiautomatico.util.ListarCasos;
+import testgenviewsemiautomatico.util.UtilTestGen;
+import testgenviewsemiautomatico.xml.GenerarXML;
+
 
 /**
  * The application's main frame.
@@ -486,44 +491,53 @@ HashSet<DtoXmlTree> dtoListClass=new HashSet<DtoXmlTree>();
  * Carga el archivo para armar el Arbol
  * @param evt
  */
-    @SuppressWarnings("static-access")
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        UtilTestGen util=new UtilTestGen();
-        String loadFine=util.loadFile(new Frame(), "java", "", ".CLASS");
-        try {
-           habilitarJpanel2(false);
-            System.out.println("Veamos ..........:"+loadFine);
-                util.limpiarDirectorios();
-		util.generarDoc(loadFine);
-                util.compilaDoc();
-                
-                util.copiarClass();
-		TreeTesis tree= new TreeTesis();
-                jTree1.setVisible(false);
-                jTree1.setModel(tree.TreeTesis(util.getPatchRepo()+"data.xml").getModel());
-                dtoListClass=tree.getDtoList();
-                jTree1.setVisible(true);
-           
-                String patch= UtilTestGen.parserPatch(loadFine);
-                Iterator<DtoXmlTree> it=dtoListClass.iterator();
-                while(it.hasNext()){
-                    DtoXmlTree dto=it.next();
-                    dto.setPatch(patch);
-                }
+	@SuppressWarnings("static-access")
+	private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_jButton1MouseClicked
+		UtilTestGen util = new UtilTestGen();
+		String loadFine = util.loadFile(new Frame(), "java", "", ".CLASS");
+		try {
+			habilitarJpanel2(false);
+			System.out.println("Veamos ..........:" + loadFine);
+			util.limpiarDirectorios();
+			util.generarDoc(loadFine);
+			util.compilaDoc();
 
-                System.out.println("Veamos ..........patch:"+patch);
+			util.copiarClass();
+			TreeTesis tree = new TreeTesis();
+			jTree1.setVisible(false);
+			jTree1.setModel(tree.TreeTesis(util.getPatchRepo() + "data.xml")
+					.getModel());
+			dtoListClass = tree.getDtoList();
+			jTree1.setVisible(true);
+
+			String patch = UtilTestGen.parserPatch(loadFine);
+			Iterator<DtoXmlTree> it = dtoListClass.iterator();
+			while (it.hasNext()) {
+				DtoXmlTree dto = it.next();
+				dto.setPatch(patch);
+			}
+
+			System.out.println("Veamos ..........patch:" + patch);
 		} catch (IOException e) {
-			 System.out.println("Error de entrada Salida...: "+e);
+			System.out.println("Error de entrada Salida...: " + e);
 			e.printStackTrace();
 
-		} catch (JDOMException e1){
-                    System.out.println("Error de entrada Salida...: "+e1);
-                    e1.printStackTrace();
-                } catch (Exception e2){
-                     System.out.println("Error parser patch...: "+e2);
-                    e2.printStackTrace();
-                }
-    }//GEN-LAST:event_jButton1MouseClicked
+		} catch (JDOMException e1) {
+			System.out.println("Error de entrada Salida...: " + e1);
+			e1.printStackTrace();
+		} catch (Exception e2) {
+			Component[] contenido = jPanel1.getComponents();
+			this.removeField(contenido);
+			JLabel claseLerror = new JLabel("Ocurrio un Error: " + e2.getMessage());
+			claseLerror.setBounds(94, 16, 400, 210 + 80);
+			jPanel1.setVisible(false);
+			claseLerror.setForeground(Color.RED);
+			jPanel1.add(claseLerror);
+			jPanel1.setVisible(true);
+			System.out.println("Error...: " + e2);
+			e2.printStackTrace();
+		}
+	}//GEN-LAST:event_jButton1MouseClicked
 
     private void jTree1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTree1MouseClicked
 
@@ -592,6 +606,7 @@ HashSet<DtoXmlTree> dtoListClass=new HashSet<DtoXmlTree>();
             ((DtoXMLCasoPrueba) dtoCaso).setValorassert(retornoTipo.get(metodo));
             ((DtoXMLCasoPrueba) dtoCaso).setPatch(patch);
             jPanel1.remove(dtoCaso);
+            jPanel1.validate();
             jPanel1.add("dtoCaso", dtoCaso);
             ListarCasos listarCasos = new ListarCasos();
             DefaultListModel listarcaso = new DefaultListModel();
@@ -744,12 +759,13 @@ private void habilitarJpanel2(boolean bb){
         }
         jPanel1.setVisible(false);
         Component[] contido=jPanel1.getComponents();
-				this.removeField(contido);
+				
                                 ayuda a=new ayuda();
 				a.jList1ValueChanged(evt);
 
 				Object[] ver=jList1.getSelectedValues();
-				if(ver!=null && ver[0] != null){
+				if(ver!=null && ver.length >0 && ver[0] != null){
+					this.removeField(contido);
                                 System.out.println("Lista..... 1: "+ver[0]);
                                 DtoXMLCasoPrueba dto=(DtoXMLCasoPrueba)ver[0];
 				String clase=dto.getClaseName();
@@ -836,7 +852,10 @@ private void habilitarJpanel2(boolean bb){
                      System.out.println("XML mal armado ejecutando caso");
                  }
                  }catch (Exception e){
-                     System.out.println(e);
+                	 MutableAttributeSet attr = new SimpleAttributeSet();
+                	 StyleConstants.setForeground(attr, Color.RED);
+                	 jTextPane1.setCharacterAttributes(attr, false);
+                     jTextPane1.setText("Parametros de entrada o Valor esperado ERRONEO");
                  }
 
     }//GEN-LAST:event_jButton3MouseClicked
@@ -849,7 +868,7 @@ private void removeField(Component[] contido){
         if ("javax.swing.JFormattedTextField".equals(it.getClass().getName())) {
             jPanel1.remove(it);
         }
-        if ("testgen4jsemiautomatico.DtoXMLCasoPrueba".equals(it.getClass().getName())) {
+        if ("testgenviewsemiautomatico.DtoXMLCasoPrueba".equals(it.getClass().getName())) {
             jPanel1.remove(it);
         }
     }

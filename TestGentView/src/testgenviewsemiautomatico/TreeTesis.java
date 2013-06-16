@@ -9,6 +9,10 @@ import javax.swing.event.TreeSelectionEvent;
 import javax.swing.tree.DefaultMutableTreeNode;
 import org.jdom.JDOMException;
 
+import testgenviewsemiautomatico.dto.DtoXmlTree;
+import testgenviewsemiautomatico.util.UtilTestGen;
+import testgenviewsemiautomatico.xml.LeerXML;
+
 
 /**
  *

@@ -1,2 +1,21 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<tests><class name="Sample1Test"><method name="testSubtraction" test-case="1"><params><param name="var1" type="int">34</param><param name="var2" type="int">14</param></params><asserts><assertgroup name="testResult"><assert name="testResult1" type="int" action="NOTEQUALS">20</assert></assertgroup></asserts></method></class></tests>
+<?xml version ="1.0" encoding = "UTF-8"?>
+ <tests xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:noNamespaceSchemaLocation="/usr/bin/jtestcase-2.2.0/config/jtestcase.xsd">
+     <class name="SampleTestTest">
+       <!-- global params -->
+         <params>         </params>
+        <method name="testMain" test-case="1">
+             <params>
+               <param name="var1" type="java.lang.String[]">NULL</param>
+             </params>
+             <asserts>
+                <assertgroup name="testResult">
+                <assert name="testResult1" type="void" action="EQUALS">null</assert>
+                </assertgroup>
+             </asserts>
+             <exception>java.lang.NullPointerException</exception>
+        </method>
+
+     </class>
+
+ </tests>

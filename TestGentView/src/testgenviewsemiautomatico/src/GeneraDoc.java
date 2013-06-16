@@ -1,6 +1,6 @@
 package testgenviewsemiautomatico.src;
 
-import testgenviewsemiautomatico.UtilTestGen;
+import testgenviewsemiautomatico.util.UtilTestGen;
 
 import com.sun.tools.javadoc.Main;
 
